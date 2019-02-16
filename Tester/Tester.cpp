@@ -3,20 +3,45 @@
 
 #include "pch.h"
 #include "Tester.h"
-#include "input_data.h"
+#include "generate_random_array.h"
 
+
+int add(int a, int b) {
+	return  a + b;
+}
 
 int main() {
+	test();
+	init();
 	std::string s;
+	std::string a_1;
 	while (input(&s)) {
 		input_data data(s);
+		data.get_argument_string(0, a_1);
+		if (a_1 == "exit") break;
+		std::unordered_map<std::string, i_cmd_let*>& cmd_lets = data_class::instance().cmd_lets();
+		i_cmd_let* call;
+		try {
+			call = cmd_lets.at(a_1);
+		} catch (std::out_of_range&) {
+
+			std::cout << "Unknown Command let.\n";
+			continue;
+		}
+		const int error_code = (*call)(data);
+		if (error_code) {
+			(*call).error_call(error_code);
+		}
 	}
+
+	fin();
+	
 	return 0;
 }
 
 bool input(std::string* s) {
 	try {
-		std::printf(">");
+		std::printf("> ");
 		std::getline(std::cin, *s);
 		
 	} catch (const std::istream::failure &e) {
@@ -26,14 +51,20 @@ bool input(std::string* s) {
 	return true;
 }
 
+void init() {
+	random::init_rand();
+	data_class::instance().cmd_lets()["GenRandom"] = new generate_random_array;
+}
 
-// プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
-// プログラムのデバッグ: F5 または [デバッグ] > [デバッグの開始] メニュー
+void fin() {
+	std::unordered_map<std::string, i_cmd_let*>& cmd_lets = data_class::instance().cmd_lets();
+	for (const std::unordered_map<std::string, i_cmd_let*>::value_type& element : cmd_lets) {
+		delete element.second;
+	}
+}
 
-// 作業を開始するためのヒント: 
-//    1. ソリューション エクスプローラー ウィンドウを使用してファイルを追加/管理します 
-//   2. チーム エクスプローラー ウィンドウを使用してソース管理に接続します
-//   3. 出力ウィンドウを使用して、ビルド出力とその他のメッセージを表示します
-//   4. エラー一覧ウィンドウを使用してエラーを表示します
-//   5. [プロジェクト] > [新しい項目の追加] と移動して新しいコード ファイルを作成するか、[プロジェクト] > [既存の項目の追加] と移動して既存のコード ファイルをプロジェクトに追加します
-//   6. 後ほどこのプロジェクトを再び開く場合、[ファイル] > [開く] > [プロジェクト] と移動して .sln ファイルを選択します
+
+void test() {
+
+
+}

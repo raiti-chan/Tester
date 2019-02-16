@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "rand.h"
 #include <random>
-#include <ctime>
 
 
 namespace random{
@@ -21,8 +20,8 @@ namespace random{
 		_mt64.seed(seed);
 	}
 
-	unsigned int rand_int() {
-		return _mt32();
+	int rand_int() {
+		return static_cast<int>(_mt32());
 	}
 
 	unsigned long long rand_long_long() {

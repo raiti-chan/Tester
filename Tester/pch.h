@@ -11,4 +11,9 @@
 // TODO: ここでプリコンパイルするヘッダーを追加します
 #include <iostream>
 #include <string>
+#include <ctime>
+#include "data_class.h"
+#include "input_data.h"
+#include "rand.h"
+
 #endif //PCH_H

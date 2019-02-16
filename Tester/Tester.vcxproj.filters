@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ヘッダー ファイル\cmd_let">
+      <UniqueIdentifier>{505584e0-5634-4554-8eff-6fc3c10ad53e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\cmd_let">
+      <UniqueIdentifier>{28b7996c-74f9-4d47-a540-0268314b1644}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -27,6 +33,15 @@
     <ClInclude Include="Tester.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="generate_random_array.h">
+      <Filter>ヘッダー ファイル\cmd_let</Filter>
+    </ClInclude>
+    <ClInclude Include="data_class.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="i_cmd_let.h">
+      <Filter>ヘッダー ファイル\cmd_let</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -39,6 +54,12 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Tester.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="generate_random_array.cpp">
+      <Filter>ソース ファイル\cmd_let</Filter>
+    </ClCompile>
+    <ClCompile Include="data_class.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

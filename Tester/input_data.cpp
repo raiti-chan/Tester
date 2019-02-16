@@ -90,30 +90,9 @@ input_data::~input_data() noexcept {
 	delete[] this->_argument_text_sizes;
 }
 
-
-unsigned int input_data::text_size() const noexcept {
-	return this->_text_size;
-}
-
-const char* input_data::text() const noexcept {
-	return this->_text;
-}
-
-unsigned int input_data::argument_size() const noexcept {
-	return this->_argument_size;
-}
-
-unsigned int input_data::get_argument_text_size(const unsigned int index) const noexcept {
-	return this->_argument_text_sizes[index];
-}
-
-const char* input_data::get_argument(const unsigned int index) const noexcept {
-	return this->_arguments[index];
-}
-
-std::string input_data::get_argument_string(const unsigned index) const noexcept {
-	std::string s(this->get_argument(index), this->get_argument_text_size(index));
-	return s;
+void input_data::get_argument_string(const unsigned int index, std::string& str) const noexcept {
+	str.clear();
+	str.append(this->_arguments[index], this->_argument_text_sizes[index]);
 }
 
 
